@@ -5,8 +5,13 @@ class TestClass:
     version = 1
 
 
+TestClass.version = 24
 test1 = TestClass()
 test2 = TestClass()
 test3 = test1
+test2.version = 100
 
-print(id(test1), id(test2), id(test3))
+
+print(id(test1.version), id(test2.version), id(test3.version))
+
+print(test1.version)
