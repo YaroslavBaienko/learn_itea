@@ -31,4 +31,4 @@ def likes(names):
     return result
 
 
-print(likes(["Pidor", "Ihor", "Dima", "Vlad", "Zad"]))
+print(likes([]))
