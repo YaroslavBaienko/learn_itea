@@ -29,7 +29,8 @@ while True:
         print('This coordinate is black')
     else:
         print('There are no such coordinate in chessboard, you can try again.')
-    if coordinate == "stop".lower():
+
+    if coordinate == 'stop':
         break
     else:
         continue
