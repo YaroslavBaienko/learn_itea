@@ -16,4 +16,5 @@ def count_by_x(x, n):
         num_array.append(sum1)
     return num_array
 
+
 print(count_by_x(3, 10))
