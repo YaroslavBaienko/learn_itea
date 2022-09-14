@@ -10,11 +10,9 @@ number = int(input('Enter the number of coordinate: '))
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']
 numbers = range(1, 9)
 
-
 letter_index = letters.index(letter)
 number_index = numbers.index(number)
 if letter_index % 2 == number_index % 2:
     print('Black')
 else:
     print('White')
-
