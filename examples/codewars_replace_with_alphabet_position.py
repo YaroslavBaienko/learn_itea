@@ -36,4 +36,4 @@ def alphabet_position(text):
     return result
 
 
-print(alphabet_position("hghj hjg hjghj g8776768"))
+print(alphabet_position("A A AS DSADAAAaa sfdg434gl"))
