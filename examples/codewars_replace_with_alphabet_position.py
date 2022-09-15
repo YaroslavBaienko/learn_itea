@@ -25,8 +25,6 @@ def alphabet_position(text):
         value += 1
         alphabet_dictionary[key] = str(value)
 
-    print(alphabet_dictionary)
-
     result = []
     for letter in sentence_letters:
         if letter in all_letters:
