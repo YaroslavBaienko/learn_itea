@@ -23,7 +23,7 @@ numbers = [5, 10, 15, 20, 25, 20]
 
 searched_value = 20
 new_value = searched_value * 10
-for index, number in enumerate(numbers):
+for index, number in enumerate(reversed(numbers)):
     if numbers[index] == searched_value:
         numbers[index] = new_value
         break
