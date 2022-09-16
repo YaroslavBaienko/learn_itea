@@ -39,5 +39,3 @@ def remove_smallest(numbers):
                     continue
                 else:
                     checked.append(num)
-
-
