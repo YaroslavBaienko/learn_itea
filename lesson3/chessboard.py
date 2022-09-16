@@ -57,7 +57,7 @@ def main(cell='a1'):
 
 
 if __name__ == '__main__':
-    cell = 'a101'
+    cell = 'a1'
 
     try:
         print(main(cell=cell))

@@ -23,3 +23,5 @@ def sort_grades(grades: list) -> list:
 
 
 print(sort_grades(['b', 'c', 'C', 'f', 'A']))
+print(sort_grades(['A', 'B', 'C', 'C', 'F', 'A']))
+print(sort_grades([]))
