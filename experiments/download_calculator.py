@@ -30,6 +30,7 @@ class Volume:
 
 
 one_tb = Volume(9.5, "Gb", 2.2).calc_download_time()
+two_tb = Volume(20000, "Mb", 6).calc_download_time()
 
 if __name__ == "__main__":
-    print(one_tb)
+    print({one_tb: two_tb})
