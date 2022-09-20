@@ -4,7 +4,8 @@ import string
 def make_chessboard(size=8):
     """Make chessboard structure data"""
     if size >= len(string.ascii_lowercase):
-        raise ValueError(f"Max size must be less the {len(string.ascii_lowercase)}")
+        raise ValueError(
+            f"Max size must be less the {len(string.ascii_lowercase)}")
     letters = string.ascii_lowercase[:size]
     chessboard = {}
     color = 0
@@ -57,7 +58,7 @@ def main(cell='a1'):
 
 
 if __name__ == '__main__':
-    cell = 'a1'
+    cell = 'a8'
 
     try:
         print(main(cell=cell))
