@@ -1,25 +1,3 @@
-# The key idea of this program is to equate the strings
-# "rock", "paper", "scissors", "lizard", "Spock" to numbers
-# as follows:
-# 0 - rock
-# 1 - Spock
-# 2 - paper
-# 3 - lizard
-# 4 - scissors
-
-import random
-
-
-# Available moves:
-# 1 - rock
-# 2 - paper
-# 3 - scissors
-# 4 - lizard
-# 5 - Spock
-# 0 - exit
-# ? - help
-# Enter your move: 2
-# Your move: paper
 def generate_key():
     import string
     import secrets
@@ -73,6 +51,7 @@ def number_to_name(number):
 
 
 def rock_paper_game(player_choice, key):
+    import random
     if player_choice in ('rock', 'paper', 'scissors', 'Spock', 'lizard'):
         print("")
         print("Your move: " + player_choice)
