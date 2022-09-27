@@ -9,7 +9,6 @@
 
 def split_text_in_file(file):
     import os
-    import re
     current_dir = os.getcwd()
     current_read_file = os.path.join(current_dir, file)
     with open(current_read_file, 'rt') as file:
