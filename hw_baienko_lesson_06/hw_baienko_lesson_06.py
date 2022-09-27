@@ -27,9 +27,11 @@ def find_longest_word(words: list) -> int:
 
 
 def print_longest_words(words_to_check: list, length: int) -> str:
+    longest_words = list()
     for word in words_to_check:
         if len(word) == length:
-            return word
+            longest_words.append(word)
+    return longest_words
 
 
 def main():
