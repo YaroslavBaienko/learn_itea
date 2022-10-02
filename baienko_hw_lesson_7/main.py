@@ -10,7 +10,7 @@
 def read_work_info_from_text_file(filename: str):
     """Read info from text files"""
     work_info = list()
-    with open(filename) as text_file:
+    with open(filename, "rt", encoding="utf-8-sig") as text_file:
         for line in text_file:
             work_info.append(line.split())
     return work_info
