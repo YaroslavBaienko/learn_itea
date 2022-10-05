@@ -38,12 +38,14 @@ def search_all_domains(elements: str):
 
 
 def sort_data(all_domains):
+    """Sort domain list and create counter with domains"""
     counter = Counter(all_domains)
     result = [(l, k) for k, l in sorted([(j, i) for i, j in counter.items()], reverse=True)]
     return result
 
 
 def create_table(result: list):
+    """Create percentage and create table"""
     table = list()
     sum = 0
     for num in result:
@@ -68,13 +70,9 @@ def main(filename: str):
     all_domains = search_all_domains(elements=elements)
     result = sort_data(all_domains=all_domains)
     table = create_table(result=result)
-    print(table)
-
-
+    return table
 
 
 if __name__ == '__main__':
     filename = 'mbox.txt'
-    main(filename=filename)
-
-   
+    print(main(filename=filename))
