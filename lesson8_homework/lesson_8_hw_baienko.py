@@ -74,5 +74,5 @@ def main(filename: str):
 
 
 if __name__ == '__main__':
-    filename = 'mbox.txt'
+    filename = 'mbox2'
     print(main(filename=filename))
