@@ -63,5 +63,5 @@ if __name__ == '__main__':
     table = list()
     for domain, nums in result:
         table.append([domain, nums, str((nums * 100) / sum) +' %'])
-    print(tabulate(table))
+    print(tabulate(table, headers=["DOMAIN","COUNT", "PERCENTAGE"]))
 
