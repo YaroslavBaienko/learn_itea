@@ -2,6 +2,7 @@
 import re
 from collections import Counter
 from tabulate import tabulate
+import matplotlib.pyplot as plt
 
 
 def check_type_exist(filename: str):
@@ -29,29 +30,20 @@ def search_all_domains(elements: str):
     """Search all domain names from elements"""
     all_domains = list()
     for element in elements:
-        search_result = re.search(r'\@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', element)
+        search_result = re.search(
+            r'\@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b', element)
         if search_result is not None:
             all_domains.append(search_result.group())
     return all_domains
 
 
-def main(filename: str):
-    """Main controller"""
-    check = check_type_exist(filename=filename)
-    if check:
-        print(check)
-        exit()
-    elements = read_elements_from_file(filename=filename)
-    all_domains = search_all_domains(elements=elements)
+def sort_data(all_domains):
     counter = Counter(all_domains)
     result = [(l, k) for k, l in sorted([(j, i) for i, j in counter.items()], reverse=True)]
     return result
 
 
-if __name__ == '__main__':
-    filename = 'mbox.txt'
-    result = main(filename=filename)
-    print('There are the next amount of mails on the same domains ordered by descending: ')
+def create_table(result: list):
     table = list()
     sum = 0
     for num in result:
@@ -63,4 +55,26 @@ if __name__ == '__main__':
     table = list()
     for domain, nums in result:
         table.append([domain, nums, str((nums * 100) / sum) + ' %'])
-    print(tabulate(table, headers=["DOMAIN", "COUNT", "PERCENTAGE"]))
+    return tabulate(table, headers=["DOMAIN", "COUNT", "PERCENTAGE"])
+
+
+def main(filename: str):
+    """Main controller"""
+    check = check_type_exist(filename=filename)
+    if check:
+        print(check)
+        exit()
+    elements = read_elements_from_file(filename=filename)
+    all_domains = search_all_domains(elements=elements)
+    result = sort_data(all_domains=all_domains)
+    table = create_table(result=result)
+    print(table)
+
+
+
+
+if __name__ == '__main__':
+    filename = 'mbox.txt'
+    main(filename=filename)
+
+   
