@@ -51,9 +51,17 @@ def main(filename: str):
 if __name__ == '__main__':
     filename = 'mbox.txt'
     result = main(filename=filename)
-    print('There are the next amount of mails on the same domains ordered by descending')
+    print('There are the next amount of mails on the same domains ordered by descending: ')
+    table = list()
+    sum = 0
+    for num in result:
+        sum = sum + num[1]
+    percentage = list()
+    for num in result:
+        percent = num[1] * 100 / sum
+        percentage.append(percent)
     table = list()
     for domain, nums in result:
-        table.append([domain, nums])
+        table.append([domain, nums, str((nums * 100) / sum) +' %'])
     print(tabulate(table))
 
