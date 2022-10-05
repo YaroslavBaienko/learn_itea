@@ -1,6 +1,7 @@
 """Count an amount of mails on the same domains ordered by descending"""
 import re
 from collections import Counter
+from tabulate import tabulate
 
 
 def check_type_exist(filename: str):
@@ -51,5 +52,8 @@ if __name__ == '__main__':
     filename = 'mbox.txt'
     result = main(filename=filename)
     print('There are the next amount of mails on the same domains ordered by descending')
+    table = list()
     for domain, nums in result:
-        print(domain, nums)
+        table.append([domain, nums])
+    print(tabulate(table))
+
