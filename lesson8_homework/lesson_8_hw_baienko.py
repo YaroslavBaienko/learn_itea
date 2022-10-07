@@ -2,7 +2,7 @@
 import re
 from collections import Counter
 from tabulate import tabulate
-import matplotlib.pyplot as plt
+
 
 
 def check_type_exist(filename: str):
@@ -74,5 +74,5 @@ def main(filename: str):
 
 
 if __name__ == '__main__':
-    filename = 'mbox2'
+    filename = 'mbox.txt'
     print(main(filename=filename))
