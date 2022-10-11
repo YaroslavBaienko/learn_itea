@@ -19,16 +19,13 @@
 # 4 = >  true
 # 25 = >  true
 # 26 = >  false
-from numpy import absolute
-
-
 def is_square(n):
-    if int(n ** 0.5):
+    if n == 0:
         return True
-    return False
+    elif (n / n ** 0.5) == (n ** 0.5):
+        return True
+    else:
+        return False
 
 
-a = 25 ** 0.5
-print(a)
-b = int(30 ** 0.5) ==
-print(b)
+print(is_square(-25))
