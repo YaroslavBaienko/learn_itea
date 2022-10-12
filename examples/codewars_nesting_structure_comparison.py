@@ -17,15 +17,15 @@
 # # should return False
 # same_structure_as([ [ [ ], [ ] ] ], [ [ 1, 1 ] ] )
 def same_structure_as(original, other):
-    if type(original) != type(other) or len(original) != len(other):
+    if type(original) != type(other):
         return False
-    for org_val, other_val in zip(original, other):
-        if type(org_val) != type(other_val):
+    if len(original) == len(other) == 0:
+        return True
+    if len(original) != len(other):
+        return False
+    for i in range(len(original)):
+        if bool(type(original[i]) == list) != bool(type(other[i]) == list):
             return False
-        if type(org_val) is list and type(other_val) is list:
-            if not same_structure_as(org_val, other_val):
-                return False
+        elif type(original[i]) == type(other[i]) == list:
+            return same_structure_as(original[i], other[i])
     return True
-
-
-print(same_structure_as([1, [1, 1]], [2, [2]]))
