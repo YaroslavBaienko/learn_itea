@@ -8,7 +8,7 @@ def parse_args() -> Namespace:
     """Parse args with argparse"""
     parser = argparse.ArgumentParser(
         prog='main',
-        usage='%(prog)s lesson11_homework_baienko.py --message <message> --lang <language> --shift <shift> [--param encode|decode]',
+        usage='%(prog)s lesson11_homework_baienko.py --message <message> --lang <language> --shift <shift> [--decode decode]',
         description='Encrypt or decrypt message using Ceasar code'
     )
     parser.add_argument(
@@ -22,7 +22,7 @@ def parse_args() -> Namespace:
         '-l',
         '--language',
         type=str,
-        help='enter language EN or UA',
+        help='enter alphabet',
         required=True
     )
     parser.add_argument(
@@ -33,33 +33,14 @@ def parse_args() -> Namespace:
         required=True
     )
     parser.add_argument(
-        '-e'
-        '--encode',
-        type=str,
-        help='choose encoding mode',
-        required=False
-    )
-    parser.add_argument(
-        '-d'
+        '-d',
         '--decode',
-        type=str,
-        help='choose decoding mode',
+        type=bool,
+        help='if want to decode type "y" and use this option',
         required=False
     )
     args = parser.parse_args()
     return args
-
-
-def encode_to_ceasar_code(map_keys: dict[str:str], message: str) -> str:
-    """Encode message using Ceasar code"""
-    encode_message = ''
-    for char in message:
-        if char.isalpha():
-            char = char.upper()
-            encode_message += map_keys[char]
-        else:
-            encode_message += char
-    return encode_message
 
 
 def make_ceasar_map_keys(shift: int, alphabet: str) -> dict[str:str]:
@@ -75,6 +56,18 @@ def make_ceasar_map_keys(shift: int, alphabet: str) -> dict[str:str]:
     return map_keys
 
 
+def encode_to_ceasar_code(map_keys: dict[str:str], message: str) -> str:
+    """Encode message using Ceasar code"""
+    encode_message = ''
+    for char in message:
+        if char.isalpha():
+            char = char.upper()
+            encode_message += map_keys[char]
+        else:
+            encode_message += char
+    return encode_message
+
+
 def decode_from_ceasar_code(map_keys: dict[str:str], encoded_message: str) -> str:
     """Encode message using Ceasar code"""
     decode_message = ''
@@ -87,7 +80,7 @@ def decode_from_ceasar_code(map_keys: dict[str:str], encoded_message: str) -> st
     return decode_message
 
 
-def main(language, line, shift: int, encode: True):
+def main(language, line, shift: int, encode: bool):
     """Main controller"""
     codes = make_ceasar_map_keys(shift=shift, alphabet=language)
     if encode:
@@ -105,8 +98,12 @@ if __name__ == '__main__':
     message = cli_args.message
     alpha = cli_args.language
     shifting = cli_args.shift
+    mode = cli_args.decode
+    encoding = True
+    if mode:
+        encoding = False
     try:
-        print(main(language=alpha, line=message, shift=shifting, encode=True))
+        print(main(language=alpha, line=message, shift=shifting, encode=encoding))
     except KeyError as error:
         print('Use symbols from current alphabet')
     # message_to_encrypt = 'Hello world'
