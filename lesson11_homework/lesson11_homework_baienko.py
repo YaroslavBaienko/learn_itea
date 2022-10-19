@@ -53,8 +53,8 @@ ALPHABET_UA = 'АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮ�
 ALPHABET_EN = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
 if __name__ == '__main__':
-    message_to_encrypt = 'Hello world'
-    message_to_decrypt = 'JGNNQ YQTNF'
+    message_to_encrypt = 'XYZ'
+    message_to_decrypt = 'JGNNQ YQTN877F'
     shift = 2
     print(main(language=ALPHABET_EN, line=message_to_encrypt, shift=shift, encode=True))
     print(main(language=ALPHABET_EN, line=message_to_decrypt, shift=shift, encode=False))
