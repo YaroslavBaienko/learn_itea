@@ -1,4 +1,3 @@
-from itertools import permutations
 def pre_process(msg, round_key):
     data = dict()
     a = list(round_key)
@@ -114,7 +113,6 @@ def decrypt(msg, round_key):
             decipher_text += table[i][j]
     print("Decipher Text: ", decipher_text)
     return decipher_text
-
 
 
 def findPermutation(str):

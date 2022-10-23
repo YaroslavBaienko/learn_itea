@@ -2,7 +2,6 @@ import math
 
 
 def encrypt_using_vertical_cipher(key: str, message: str) -> str:
-    # Func encrypt user message using vertical transposition cipher
     message = message.replace(' ', '*')
     key_chars = [x for x in key]
     key_length = len(key)
@@ -55,7 +54,6 @@ def encrypt_using_vertical_cipher(key: str, message: str) -> str:
 
 
 def decrypt_from_vertical_cipher_text(key: str, cipher: str) -> str:
-    # Func decrypt encrypted message using vertical transposition cipher
     cipher_length = len(cipher)
     cipher_chars = [x for x in cipher]
     key_length = len(key)
