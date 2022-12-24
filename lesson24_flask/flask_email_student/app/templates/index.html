@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block page_content %}
+
+<div class="page-header">
+  <h1>Welcome to the web application.</h1>
+</div>
+<h3>Generate test data</h3>
+{% include 'messages.html' %}
+<form action="{{ url_for('main.index') }}" method="post">
+  {{ form.csrf_token }}
+  {{ wtf.form_field(form.submit) }}
+</form>
+<hr>
+
+<p>The local date and time is {{ moment(current_time).format('MMMM Do YYYY, H:mm:ss') }}.</p>
+<p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
+
+{% endblock page_content %}

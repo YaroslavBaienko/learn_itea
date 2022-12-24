@@ -1,0 +1,7 @@
+footer {
+    margin-top: 100px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}

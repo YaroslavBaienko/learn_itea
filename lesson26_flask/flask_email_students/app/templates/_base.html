@@ -1,0 +1,51 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+{{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}"
+        type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}"
+        type="image/x-icon">
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Web app</a>
+        </div>
+        <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+        <li><a class='action' href="{{ url_for('main.index') }}">Home</a></li>
+        <li><a class='action' href="{{ url_for('main.add_email') }}">Add user</a></li>
+        <li><a class='action' href="{{ url_for('main.show_emails') }}">Show users</a></li>
+        <li><a class='action' href="{{ url_for('weather.index') }}">Weather</a></li>
+        <li><a class='action' href="{{ url_for('weather.show_city') }}">Cities weather</a></li>
+        </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    {{ moment.include_moment() }}
+    <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/links.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/select.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends '_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+  {{ title }}
+{% endblock title %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Show weather info</h1>
+</div>
+{% include 'messages.html' %}
+
+<div class="col-md-4 table-responsive">
+    <h3>Weather info about city {{ city.name}}, {{ city.country }}</h3>
+    <table class="table table-hover table-striped" id="userTable">
+        <thead>
+            <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for field, value in city.items() %}
+            <tr>
+                <td>{{ field.capitalize() }}</td>
+                {% if field == 'icon_url' %}
+                <td class="bg-info"><img src="{{ value }}" alt=""></td>
+                {% else %}
+                <td>{{ value }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock page_content %}

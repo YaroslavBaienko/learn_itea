@@ -1,0 +1,32 @@
+{% extends "bootstrap/base.html" %}
+
+{% block head %}
+{{ super() }}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.png') }}"
+        type="image/x-icon">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}"
+        type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+{% endblock %}
+
+{% block title %}{% endblock %}
+
+{% block navbar %}
+{% include 'nav/nav_bar_top.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% block page_content %}{% endblock %}
+</div>
+{% include 'nav/footer.html' %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+    {{ moment.include_moment() }}
+    <script src="https://cdn.jsdelivr.net/npm/@mojs/core"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/links.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/select.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/get_year.js') }}"></script>
+{% endblock %}

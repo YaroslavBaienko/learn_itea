@@ -1,0 +1,22 @@
+{% extends '_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+  {{ title }}
+{% endblock title %}
+
+{% block page_content %}
+    <div class="page-header">
+        <h1>{{ title }}</h1>
+    </div>
+    {% include 'messages.html' %}
+    <div class="col-md-4">
+        <form action="{{ url_for('main.update_email') }}" method="POST">
+            {{ form.csrf_token }}
+            {{ wtf.form_field(form.id) }}
+            {{ wtf.form_field(form.name) }}
+            {{ wtf.form_field(form.email) }}
+            {{ wtf.form_field(form.submit) }}
+        </form>
+    </div>
+{% endblock page_content %}

@@ -1,0 +1,52 @@
+{% extends '_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+  {{ title }}
+{% endblock title %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Show weather info</h1>
+</div>
+{% include 'messages.html' %}
+
+<form action="{{ url_for('weather.index') }}" method="POST">
+    {{ form.csrf_token }}
+    {{ wtf.form_field(form.city_name) }}
+    {{ wtf.form_field(form.submit) }}
+</form>
+
+{% if city_weather %}
+<div class="col-md-4 table-responsive">
+    <h3>Weather info about city {{ city_name.capitalize() }}, {{ country.name }}</h3>
+    <table class="table table-hover table-striped" id="userTable">
+        <thead>
+            <tr>
+                <th scope="col">Field</th>
+                <th scope="col">Value</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for field, value in city_weather.items() %}
+            <tr>
+                <td>{{ field.capitalize() }}</td>
+                {% if field == 'icon_url' %}
+                <td class="bg-info"><img src="{{ value }}" alt=""></td>
+                {% else %}
+                <td>{{ value }}</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <form action="{{ url_for('weather.add_city') }}" method="post" id="userForm">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="hidden" name="city" value="{{ city_name }}"/>
+        <input type="hidden" name="country" value="{{ country.id }}"/>
+        <button type="submit" class="btn btn-primary">Add city</button>
+    </form>
+</div>
+{% endif %}
+
+{% endblock page_content %}
