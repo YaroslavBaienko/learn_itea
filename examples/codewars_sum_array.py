@@ -25,4 +25,4 @@ def sum_array(a):
         summary += i
     return summary
 
-print(sum_array([]))
+print(sum_array([3, 3, 5, 5]))

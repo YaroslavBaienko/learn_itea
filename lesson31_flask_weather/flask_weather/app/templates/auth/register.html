@@ -1,0 +1,24 @@
+{% extends '_base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+{{ title }}
+{% endblock title %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Register user</h1>
+</div>
+{% include 'messages.html' %}
+<div class="col-md-4">
+    <form action="{{ url_for('auth.register') }}" method="POST">
+        {{ form.csrf_token }}
+        {{ wtf.form_field(form.username) }}
+        {{ wtf.form_field(form.email) }}
+        {{ wtf.form_field(form.password) }}
+        {{ wtf.form_field(form.password_repeat) }}
+        {{ wtf.form_field(form.submit) }}
+    </form>
+</div>
+
+{% endblock page_content %}

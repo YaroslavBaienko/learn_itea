@@ -1,0 +1,58 @@
+version: '3.7'
+
+services:
+  db:
+    image: 'postgres:latest'
+    container_name: postgres_students
+    env_file:
+      - .flaskenv
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - students_data:/var/lib/postgresql/data/
+    networks:
+      - flask_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    ports:
+      - "3333:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    links:
+      - db:db
+    depends_on:
+      - db
+    networks:
+      - flask_network
+
+  web:
+    restart: always
+    build: .
+    container_name: backend_students
+    command: python /code/students.py
+    environment:
+      - PYTHONUNBUFFERED=True
+    env_file:
+      - .flaskenv
+    volumes:
+      - .:/code
+    ports:
+      - "5050:5000"
+    links:
+      - db:db
+    depends_on:
+      - db
+    networks:
+      - flask_network
+
+volumes:
+  students_data:
+    driver: local
+
+networks:
+  flask_network:
+    driver: bridge
